@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    // Your  code will go here
+    const ColourPicker = () => {
+        const [colour, setColour] = React.useState('');
+
+        // Handle input change
+        const handleColourChange = (ele) => {
+             setColour(ele.target.value);
+        };
+
+        return (
+            <div>
+                <input
+                    type="text"
+                    value={colour}
+                    onChange={handleColourChange}
+                    placeholder="Enter a hex colour "
+                />
+                <div>
+                    <p>Your Entered Colour Value: {colour}</p>
+                </div>
+                <div
+                    style={{
+                        width: '100px',
+                        height: '100px',
+                        backgroundColor: colour,
+                    }}
+                ></div>
+            </div>
+        );
+    };
+
+    const rootElement = document.getElementById('root');
+    const reactRoot = ReactDOM.createRoot(rootElement);
+    reactRoot.render(<ColourPicker />);
+
+</script>
+
+</html>
